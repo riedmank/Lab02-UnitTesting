@@ -23,9 +23,13 @@ namespace UnitTesting
                 {
                     case 1:
                         Console.WriteLine("Deposit");
+                        decimal depositAmount = decimal.Parse(Console.ReadLine());
+                        Deposit(depositAmount);
                         break;
                     case 2:
                         Console.WriteLine("Withdraw");
+                        decimal withdrawAmount = decimal.Parse(Console.ReadLine());
+                        Withdraw(withdrawAmount);
                         break;
                     case 3:
                         Console.WriteLine("Check Balance");
@@ -43,6 +47,10 @@ namespace UnitTesting
 
         public static decimal Deposit(decimal money)
         {
+            if (money > 0)
+            {
+                balance += money;
+            }
             return GetBalance();
         }
         

@@ -12,5 +12,21 @@ namespace AutomatedTellerMachineTests
         {
             Assert.Equal(balance, GetBalance());
         }
+
+        [Theory]
+        [InlineData(50)]
+        [InlineData(1000)]
+        public void CanDepositMoney(decimal money)
+        {
+            Assert.Equal(balance + money, Deposit(money));
+        }
+
+        [Theory]
+        [InlineData(50)]
+        [InlineData(1000)]
+        public void CanWithdrawMoney(decimal money)
+        {
+            Assert.Equal(balance - money, Withdraw(money));
+        }
     }
 }
