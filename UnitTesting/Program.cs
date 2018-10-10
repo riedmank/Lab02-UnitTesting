@@ -61,7 +61,7 @@ namespace UnitTesting
             if (money > 0)
                 balance += money;
             else
-                throw new ArgumentException("Parameter cannot be negative!");
+                throw new Exception("Parameter cannot be negative!");
             return GetBalance();
         }
         
@@ -70,7 +70,12 @@ namespace UnitTesting
             if (money > 0 && money < balance)
                 balance -= money;
             else
-                throw new ArgumentException("Parameter cannot be negative!");
+            {
+                if(balance < money)
+                    throw new Exception("Cannot Overdraw Account!");
+                else
+                    throw new Exception("Parameter cannot be negative!");
+            }
             return GetBalance();
         }
 

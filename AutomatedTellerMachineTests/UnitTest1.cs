@@ -32,7 +32,7 @@ namespace AutomatedTellerMachineTests
         }
 
         [Theory]
-        [InlineData(50)]
+        [InlineData(250)]
         [InlineData(1000)]
         public void CanDepositDifferentAmounts(decimal money)
         {
@@ -40,7 +40,7 @@ namespace AutomatedTellerMachineTests
         }
 
         [Theory]
-        [InlineData(50)]
+        [InlineData(250)]
         [InlineData(1000)]
         public void CanWithdrawDifferentAmounts(decimal money)
         {
