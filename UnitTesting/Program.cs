@@ -24,18 +24,20 @@ namespace UnitTesting
                     case 1:
                         Console.WriteLine("Deposit");
                         decimal depositAmount = decimal.Parse(Console.ReadLine());
-                        Deposit(depositAmount);
+                        Console.WriteLine($"Current balance: ${Deposit(depositAmount)}");
                         break;
                     case 2:
                         Console.WriteLine("Withdraw");
                         decimal withdrawAmount = decimal.Parse(Console.ReadLine());
-                        Withdraw(withdrawAmount);
+                        Console.WriteLine($"Current Balance: ${Withdraw(withdrawAmount)}");
                         break;
                     case 3:
                         Console.WriteLine("Check Balance");
+                        Console.WriteLine($"Current Balance: {GetBalance()}");
                         break;
                     default:
                         Console.WriteLine("Session Terminated. Have a nice day.");
+                        Environment.Exit(0);
                         break;
                 }
 
@@ -56,6 +58,10 @@ namespace UnitTesting
         
         public static decimal Withdraw(decimal money)
         {
+            if (money > 0)
+            {
+                balance -= money;
+            }
             return GetBalance();
         }
 
