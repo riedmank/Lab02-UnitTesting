@@ -17,33 +17,42 @@ namespace UnitTesting
                 Console.WriteLine("3. Check Balance");
                 Console.WriteLine("4. Exit Session");
 
-                int userChoice = int.Parse(Console.ReadLine());
-                
-                switch (userChoice)
+                try
                 {
-                    case 1:
-                        Console.WriteLine("Deposit");
-                        decimal depositAmount = decimal.Parse(Console.ReadLine());
-                        Console.WriteLine($"Current balance: ${Deposit(depositAmount)}");
-                        break;
-                    case 2:
-                        Console.WriteLine("Withdraw");
-                        decimal withdrawAmount = decimal.Parse(Console.ReadLine());
-                        Console.WriteLine($"Current Balance: ${Withdraw(withdrawAmount)}");
-                        break;
-                    case 3:
-                        Console.WriteLine("Check Balance");
-                        Console.WriteLine($"Current Balance: {GetBalance()}");
-                        break;
-                    default:
-                        Console.WriteLine("Session Terminated. Have a nice day.");
-                        Environment.Exit(0);
-                        break;
-                }
+                    int userChoice = int.Parse(Console.ReadLine());
 
-                Console.WriteLine("Do you wish to make another transaction? y/n");
-                string userResponse = Console.ReadLine();
-                action = userResponse == "y" ? action = true : action = false;
+                    switch (userChoice)
+                    {
+                        case 1:
+                            Console.WriteLine("Enter an amount to deposit.");
+                            decimal depositAmount = decimal.Parse(Console.ReadLine());
+                            Console.WriteLine($"Current balance: {Deposit(depositAmount).ToString("C")}");
+                            break;
+                        case 2:
+                            Console.WriteLine("Enter an amount to withdraw.");
+                            decimal withdrawAmount = decimal.Parse(Console.ReadLine());
+                            Console.WriteLine($"Current Balance: {Withdraw(withdrawAmount).ToString("C")}");
+                            break;
+                        case 3:
+                            Console.WriteLine($"Current Balance: {GetBalance().ToString("C")}");
+                            break;
+                        default:
+                            Console.WriteLine("Session Terminated. Have a nice day.");
+                            Environment.Exit(0);
+                            break;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Error message: {e.Message}");
+                }
+                finally
+                {
+                    Console.WriteLine("Do you wish to make another transaction? (y/n)");
+                    string userResponse = Console.ReadLine();
+                    action = userResponse == "y" ? action = true : action = false;
+                    if(!action) Console.WriteLine("Session Terminated. Have a nice day.");
+                }
             }
         }
 
@@ -53,15 +62,19 @@ namespace UnitTesting
             {
                 balance += money;
             }
+            else
+                throw new ArgumentException("Parameter cannot be negative!");
             return GetBalance();
         }
         
         public static decimal Withdraw(decimal money)
         {
-            if (money > 0)
+            if (money > 0 && money < balance)
             {
                 balance -= money;
             }
+            else
+                throw new ArgumentException("Parameter cannot be negative!");
             return GetBalance();
         }
 
