@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTesting", "UnitTesting\UnitTesting.csproj", "{6779AD4F-EBB6-4665-B8AC-07D066798E31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomatedTellerMachineTests", "AutomatedTellerMachineTests\AutomatedTellerMachineTests.csproj", "{3C1F4DA7-A078-4B0E-8B78-2BD8B5F523C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomatedTellerMachineTests", "AutomatedTellerMachineTests\AutomatedTellerMachineTests.csproj", "{3C1F4DA7-A078-4B0E-8B78-2BD8B5F523C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
