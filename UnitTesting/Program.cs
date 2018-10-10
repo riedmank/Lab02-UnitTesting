@@ -4,7 +4,7 @@ namespace UnitTesting
 {
     public class Program
     {
-        public static decimal balance = 5000m;
+        public static decimal balance = 50_000m;
 
         public static void Main(string[] args)
         {
@@ -59,9 +59,7 @@ namespace UnitTesting
         public static decimal Deposit(decimal money)
         {
             if (money > 0)
-            {
                 balance += money;
-            }
             else
                 throw new ArgumentException("Parameter cannot be negative!");
             return GetBalance();
@@ -70,9 +68,7 @@ namespace UnitTesting
         public static decimal Withdraw(decimal money)
         {
             if (money > 0 && money < balance)
-            {
                 balance -= money;
-            }
             else
                 throw new ArgumentException("Parameter cannot be negative!");
             return GetBalance();

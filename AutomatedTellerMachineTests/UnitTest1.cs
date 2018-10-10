@@ -13,10 +13,28 @@ namespace AutomatedTellerMachineTests
             Assert.Equal(balance, GetBalance());
         }
 
+        [Fact]
+        public void CannotBeZero()
+        {
+            Assert.NotEqual(0, GetBalance());
+        }
+
+        [Fact]
+        public void CanDepositMoney()
+        {
+            Assert.Equal(balance + 50m, Deposit(50m));
+        }
+
+        [Fact]
+        public void CanWithdrawMoney()
+        {
+            Assert.Equal(balance - 50m, Withdraw(50m));
+        }
+
         [Theory]
         [InlineData(50)]
         [InlineData(1000)]
-        public void CanDepositMoney(decimal money)
+        public void CanDepositDifferentAmounts(decimal money)
         {
             Assert.Equal(balance + money, Deposit(money));
         }
@@ -24,7 +42,7 @@ namespace AutomatedTellerMachineTests
         [Theory]
         [InlineData(50)]
         [InlineData(1000)]
-        public void CanWithdrawMoney(decimal money)
+        public void CanWithdrawDifferentAmounts(decimal money)
         {
             Assert.Equal(balance - money, Withdraw(money));
         }
